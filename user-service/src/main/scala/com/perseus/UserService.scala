@@ -32,6 +32,11 @@ trait UserService[F[_]] {
       userEntities <- repo.list
     } yield userEntities
 
+  def listSubscribedUsers: F[List[UserEntity]] =
+    for {
+      _ <- L.info("Trying to Fetch list of users")
+      userEntities <- repo.listSubscribed
+    } yield userEntities
   def reset: F[Int] = for {
     _ <- L.info("REsetting user Table")
     reset <- repo.reset

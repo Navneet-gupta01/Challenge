@@ -1,4 +1,5 @@
-package com.perseus
+package com.presus
+
 
 import cats.effect.IO
 import cats.effect.{ConcurrentEffect, ExitCode, IOApp}
@@ -10,26 +11,24 @@ import org.http4s.implicits._
 import org.http4s.server.Router
 import org.http4s.server.blaze._
 
+
 @module
 trait AppDep[F[_]] {
-  val userService: TemplateService[F]
-  val userRepository: TemplateRepo[F]
+  val msgService: EmailService[F]
 }
-object TemplateApp extends IOApp {
+
+object NotiApp extends IOApp {
   import cats.implicits._
-  import com.olegpy.meow.hierarchy._
-  import implicits._
 
   def run(args: List[String]): IO[ExitCode] = bootstrap[IO]
 
-  def bootstrap[F[_] : ConcurrentEffect](implicit T: Transactor[F], api: TemplateApi[F], app: AppDep[F]): F[ExitCode] = {
-    val services = api.routes
+  def bootstrap[F[_] : ConcurrentEffect](implicit api: NotiApi[F], app: AppDep[F]): F[ExitCode] = {
+    val services = api.endPoints
 
     BlazeServerBuilder[F]
-      .bindHttp(8084, "localhost")
+      .bindHttp(8085, "localhost")
       .withHttpApp(Router("/" -> services).orNotFound)
       .serve.compile.drain.as(ExitCode.Success)
 
   }
-
 }

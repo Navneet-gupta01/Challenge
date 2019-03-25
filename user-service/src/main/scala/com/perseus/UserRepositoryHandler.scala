@@ -21,6 +21,11 @@ class UserRepositoryHandler[F[_]: Monad](implicit T: Transactor[F]) extends User
       .to[List]
       .transact(T)
 
+  override def listSubscribed: F[List[UserEntity]] =
+    listSubscribedQuery
+      .to[List]
+      .transact(T)
+
   override def getUser(id: Long): F[Option[UserEntity]] =
     getQuery(id)
       .option

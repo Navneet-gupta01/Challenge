@@ -15,6 +15,8 @@ object UserQueries {
 
   def listQuery: Query0[UserEntity] =
     sql"""SELECT surname, firstname, gender, email, subscribedtonewsletter, id from users""".query[UserEntity]
+  def listSubscribedQuery: Query0[UserEntity] =
+    sql"""SELECT surname, firstname, gender, email, subscribedtonewsletter, id from users where subscribedtonewsletter = true""".query[UserEntity]
 
   def createQuery: Update0 =
     sql"""

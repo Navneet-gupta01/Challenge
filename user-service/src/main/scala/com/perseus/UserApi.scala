@@ -26,6 +26,10 @@ class UserApi[F[_]: Effect] (implicit services: UserService[F],
         Ok(item.asJson)
       }
 
+    case GET -> Root / "users" / "subscribed" =>
+      services.listSubscribedUsers flatMap { item =>
+        Ok(item.asJson)
+      }
     case POST -> Root / "users" =>
       services.reset flatMap { item =>
         Ok(item.asJson)

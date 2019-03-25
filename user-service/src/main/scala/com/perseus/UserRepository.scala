@@ -6,5 +6,6 @@ import freestyle.tagless.tagless
 trait UserRepository[F[_]] {
   def reset: F[Int]
   def list:F[List[UserEntity]]
+  def listSubscribed:F[List[UserEntity]]
   def getUser(id: Long): F[Option[UserEntity]]
 }
