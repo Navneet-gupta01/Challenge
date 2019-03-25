@@ -15,11 +15,20 @@ trait EmailService[F[_]] {
 
   implicit val M: Monad[F]
   implicit val L: LoggingM[F]
+  val error: ErrorM[F]
 
 
-  def sendMessages(messages: List[String]) : F[Int] =
+  def sendWelcomeMessages(message: String) : F[Int] =
+    for {
+      _ <- L.info(s"Sending Messages : ${message}")
+      sent <- 1.pure[F]
+    } yield sent
+
+  def sendNewsletterMessages(messages: List[String]) : F[Int] =
     for {
       _ <- L.info(s"Sending Messages : ${messages}")
-      sent <- messages.length.pure[F]
+      sent <- if(messages.length >=10)
+        messages.length.pure[F] //send message
+      else 0.pure[F]
     } yield sent
 }

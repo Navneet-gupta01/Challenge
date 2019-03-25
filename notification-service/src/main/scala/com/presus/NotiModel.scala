@@ -10,4 +10,13 @@ sealed trait NotiDomainErrors extends Exception {
 
 case class BadgeUpdateConstraintFailed(user: Int) extends NotiDomainErrors {
   override def msg: String = s"Batch send Constriant Failed. Found Only ${user} users"
+
+}
+
+
+final case class ErrorResp(errors: String)
+
+
+object ErrorResp {
+  def apply(msg: String): ErrorResp = ErrorResp(msg)
 }

@@ -58,12 +58,12 @@ class NotiApi[F[_]: ConcurrentEffect](
         _ <- log.info(s"Got User for welcome template message to with name: ${user.firstname}")
         templateEntity <- getTemplate("welcome")
         _ <- log.info(s"Got Template for Welcome key ${templateEntity.template}")
-        sentNumbers <- service.sendMessages(
-          List(
+        sentNumbers <- service.sendWelcomeMessages(
+
             templateEntity.template
               .replace("{{user.salutation}}", getSalutation(user.gender))
               .replace("{{user.name}}", getUserName(user))
-              .replace("{{user.identifier}}", user.id.get + "")))
+              .replace("{{user.identifier}}", user.id.get + ""))
         res <- Ok(sentNumbers.asJson)
       } yield res
     case GET -> Root / "newsletter" =>
@@ -71,9 +71,8 @@ class NotiApi[F[_]: ConcurrentEffect](
         _ <- log.info(s"Sending newsletter template message")
         users <- getUsersList
         _ <- log.info(s"got ${users.length} number of USers")
-        _ <- error.either[Boolean]((users.length < 10).some.toRight(BadgeUpdateConstraintFailed(users.length)))
         templateEntity <- getTemplate("newsletter")
-        sentNumbers <- service.sendMessages(
+        sentNumbers <- service.sendNewsletterMessages(
           users.map(
             user =>
               templateEntity.template
@@ -83,6 +82,7 @@ class NotiApi[F[_]: ConcurrentEffect](
         res <- Ok(sentNumbers.asJson)
       } yield res
   }
+
 
 }
 
