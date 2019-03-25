@@ -8,6 +8,14 @@
 ## Simple SBT project .
 
 ## Uses PostgresQL
+Postgres Setup 
+
+Login to Postgres.  
+create a database =>' CREATE DATABASE perseus'  
+change the configuration in files.  
+ * username, databsename etc
+1.  user-service/src/main/scala/com/perseus/implicits.scala  
+2. template-service/src/main/scala/com/perseus/implicits.scala  
 
 # Functional Programming
 
