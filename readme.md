@@ -1,37 +1,37 @@
-#Perseus Challenge
+# Perseus Challenge
 
 * UIser Service
 * NotificationService
 * Template Service
 
 
-##Simple SBT project .
+## Simple SBT project .
 
-##Uses PostgresQL
+## Uses PostgresQL
 
-#Functional Programming
+# Functional Programming
 
-#Start User Service:   
+# Start User Service:   
 ``` 
 cd perseus/user-service
 sbt run
 ```
 
 
-#Start Template Service:  
+# Start Template Service:  
 ```
 cd perseus/template-service
 sbt run
 ```
 
-#Start notification Service:  
+# Start notification Service:  
 ```
 cd perseus/notification-service
 sbt run
 ```
 
 
-#Send Welcome Message
+# Send Welcome Message
 ```
 curl -X GET \
   http://localhost:8085/welcome/users/1 \
@@ -41,7 +41,7 @@ curl -X GET \
   -H 'X-Requested-With: XMLHttpRequest' \
   -H 'cache-control: no-cache'
 ```
-#Send newsletter
+# Send newsletter
 
 ```
 curl -X GET \
@@ -53,7 +53,7 @@ curl -X GET \
   -H 'cache-control: no-cache'
 ```
 
-#Get USers by user id:
+# Get USers by user id:
 ```
 curl -X GET \
   http://localhost:8083/users/1 \
@@ -64,7 +64,7 @@ curl -X GET \
   -H 'cache-control: no-cache'
 ```
 
-#Get Users list
+# Get Users list
 
 ```
 curl -X GET \
@@ -76,7 +76,7 @@ curl -X GET \
   -H 'cache-control: no-cache'
 ```
 
-#Get Template by template id
+# Get Template by template id
 ```
 curl -X GET \
   http://localhost:8084/templates/1 \
@@ -87,7 +87,7 @@ curl -X GET \
   -H 'cache-control: no-cache'
 ```
 
-#Get  Temoplate by key
+# Get  Temoplate by key
 ```
 curl -X GET \
   http://localhost:8084/templates/welcome \
