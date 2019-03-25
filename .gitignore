@@ -11,6 +11,5 @@ bin/
 .bloom/
 .metals/
 .bloop/
-*.sql
 *.xml
 /.idea
