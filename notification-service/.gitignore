@@ -1,0 +1,16 @@
+.idea/
+target/
+*.xml
+.settings/
+.cache-main
+.cache-tests
+.classpath
+.project
+bin/
+*.iml
+.bloom/
+.metals/
+.bloop/
+*.sql
+*.xml
+/.idea
