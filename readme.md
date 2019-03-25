@@ -17,8 +17,11 @@ change the configuration in files.
 1.  user-service/src/main/scala/com/perseus/implicits.scala  
 2. template-service/src/main/scala/com/perseus/implicits.scala  
 
+#import tables
+`psql -c '\i table.sql' -d perseus -U postgres`
 
-Resetting/ Creating tables
+
+#Resetting/ Creating tables
 ```
 curl -X POST \
   http://localhost:8083/users \
