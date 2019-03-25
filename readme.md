@@ -17,6 +17,23 @@ change the configuration in files.
 1.  user-service/src/main/scala/com/perseus/implicits.scala  
 2. template-service/src/main/scala/com/perseus/implicits.scala  
 
+
+Resetting/ Creating tables
+```
+curl -X POST \
+  http://localhost:8083/users \
+  -H 'Postman-Token: d14dc9cb-921b-4302-ad1e-db055b191cb1' \
+  -H 'cache-control: no-cache'
+  
+  
+curl -X POST \
+  http://localhost:8084/templates \
+  -H 'Postman-Token: 03c35eac-f2e4-4b8a-852a-42043278baa2' \
+  -H 'cache-control: no-cache'
+```  
+
+
+
 # Functional Programming
 
 # Start User Service:   
