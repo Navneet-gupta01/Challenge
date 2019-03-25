@@ -11,7 +11,7 @@ object Codecs {
 
   implicit def errorRespDecoder[F[_] : Sync]: EntityDecoder[F, ErrorResp] = jsonOf[F, ErrorResp]
 
-  implicit def usersEntityEncoder[F[_] : Applicative]: EntityEncoder[F, UserEntity] = jsonEncoderOf[F, UserEntity]
+  implicit def templateEntityEncoder[F[_] : Applicative]: EntityEncoder[F, TemplateEntity] = jsonEncoderOf[F, TemplateEntity]
 
-  implicit def usersEntityDecoder[F[_] : Sync]: EntityDecoder[F, UserEntity] = jsonOf[F, UserEntity]
+  implicit def templateEntityDecoder[F[_] : Sync]: EntityDecoder[F, TemplateEntity] = jsonOf[F, TemplateEntity]
 }
