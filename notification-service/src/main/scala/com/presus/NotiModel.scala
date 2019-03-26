@@ -12,11 +12,8 @@ case class BadgeUpdateConstraintFailed(user: Int) extends NotiDomainErrors {
   override def msg: String = s"Batch send Constriant Failed. Found Only ${user} users"
 
 }
-
+case class UserDoesNotExist(user_id: Long) extends NotiDomainErrors {
+  override def msg: String = s"User Not found for user_id: ${user_id}"
+}
 
 final case class ErrorResp(errors: String)
-
-
-object ErrorResp {
-  def apply(msg: String): ErrorResp = ErrorResp(msg)
-}
