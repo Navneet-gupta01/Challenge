@@ -17,11 +17,11 @@ change the configuration in files.
 1.  user-service/src/main/scala/com/perseus/implicits.scala  
 2. template-service/src/main/scala/com/perseus/implicits.scala  
 
-#import tables
+# import tables
 `psql -c '\i table.sql' -d perseus -U postgres`
 
 
-#Resetting/ Creating tables
+# Resetting/ Creating tables
 ```
 curl -X POST \
   http://localhost:8083/users \
@@ -68,6 +68,12 @@ curl -X GET \
   -H 'X-Requested-With: XMLHttpRequest' \
   -H 'cache-control: no-cache'
 ```
+Response
+status: 200 OK
+body: 
+Integer => depicitng number of messages sent
+0 in case Constraint of 10 not met.
+
 # Send newsletter
 
 ```
@@ -79,7 +85,13 @@ curl -X GET \
   -H 'cache-control: no-cache'
 ```
 
-# Get USers by user id:
+Response
+status: 200 OK
+body:
+Integer => depicitng number of messages sent
+0 in case Constraint of 10 not met.
+
+# Get Users by user id:
 ```
 curl -X GET \
   http://localhost:8083/users/1 \
@@ -88,7 +100,17 @@ curl -X GET \
   -H 'X-Requested-With: XMLHttpRequest' \
   -H 'cache-control: no-cache'
 ```
-
+Response
+status: 200 OK
+body:
+{
+    "surname": "Turner",
+    "firstname": "Tom",
+    "gender": "male",
+    "email": "tom.turner@provider.de",
+    "subscribedtonewsletter": true,
+    "id": 1
+}
 # Get Users list
 
 ```
@@ -99,7 +121,27 @@ curl -X GET \
   -H 'X-Requested-With: XMLHttpRequest' \
   -H 'cache-control: no-cache'
 ```
-
+Response 
+status: 200 OK
+body:
+[
+    {
+        "surname": "Turner",
+        "firstname": "Tom",
+        "gender": "male",
+        "email": "tom.turner@provider.de",
+        "subscribedtonewsletter": true,
+        "id": 1
+    },
+    {
+        "surname": "Doe",
+        "firstname": "John",
+        "gender": "male",
+        "email": "jon.doe@test-mailing.com",
+        "subscribedtonewsletter": true,
+        "id": 2
+    }
+    ]
 # Get Template by template id
 ```
 curl -X GET \
@@ -109,6 +151,14 @@ curl -X GET \
   -H 'X-Requested-With: XMLHttpRequest' \
   -H 'cache-control: no-cache'
 ```
+Response 
+status: 200 OK
+body:
+{
+    "template": "template",
+    "key": "key",
+    "id": 2
+}
 
 # Get  Temoplate by key
 ```
@@ -119,4 +169,12 @@ curl -X GET \
   -H 'X-Requested-With: XMLHttpRequest' \
   -H 'cache-control: no-cache'
 ```
+status: 200 OK
+body:
+Response 
 
+{
+    "template": "template",
+    "key": "key",
+    "id": 2
+}
