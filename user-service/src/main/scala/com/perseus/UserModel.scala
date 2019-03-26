@@ -5,8 +5,3 @@ case class UserEntity(surname: String,firstname: String,gender: String, email: S
 
 
 final case class ErrorResp(errors: String)
-
-
-object ErrorResp {
-  def apply(errorMsgs: String): ErrorResp = ErrorResp(errorMsgs)
-}
