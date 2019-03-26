@@ -29,6 +29,6 @@ trait EmailService[F[_]] {
       _ <- L.info(s"Sending Messages : ${messages}")
       sent <- if(messages.length >=10)
         messages.length.pure[F] //send message
-      else 0.pure[F]
+      else 0.pure[F]      // donot send message since no sufficient users found subscribed
     } yield sent
 }
