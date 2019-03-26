@@ -1,4 +1,4 @@
-# Perseus Challenge
+# Challenge
 
 * UIser Service
 * NotificationService
