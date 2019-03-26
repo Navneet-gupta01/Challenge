@@ -24,22 +24,26 @@ class NotiApi[F[_]: ConcurrentEffect](
     H: HttpErrorHandler[F, NotiDomainErrors])
     extends Http4sDsl[F] {
   import Codecs._
+
   def getUserDetail(id: Long): F[UserEntity] =
     BlazeClientBuilder[F](global).resource.use { client =>
       val uri = Uri.uri("http://localhost:8083/users/") / id.toString
-      client.expect[UserEntity](uri)
+      client.expectOr[UserEntity](uri) {
+        case UnprocessableEntity(msg) => error.error(UserDoesNotExist(id))}
     }
 
   def getUsersList: F[List[UserEntity]] =
     BlazeClientBuilder[F](global).resource.use { client =>
       val uri = Uri.uri("http://localhost:8083/users/subscribed")
-      client.expect[List[UserEntity]](uri)
+      client.expectOr[List[UserEntity]](uri){
+        case UnprocessableEntity(msg) => error.error(HttpServiceException(uri.toString(),null))}
     }
 
   def getTemplate(key: String): F[TemplateEntity] =
     BlazeClientBuilder[F](global).resource.use { client =>
       val uri = Uri.uri("http://localhost:8084/templates/") / key
-      client.expect[TemplateEntity](uri)
+      client.expectOr[TemplateEntity](uri){
+        case UnprocessableEntity(msg) => error.error(TemplateDoesNotExistForKey(key))}
     }
 
   def getSalutation(gender: String): String = gender match {
