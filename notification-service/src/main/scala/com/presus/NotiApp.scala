@@ -19,6 +19,9 @@ trait AppDep[F[_]] {
 
 object NotiApp extends IOApp {
   import cats.implicits._
+  import com.olegpy.meow.hierarchy._
+
+  import implicits._
 
   def run(args: List[String]): IO[ExitCode] = bootstrap[IO]
 
