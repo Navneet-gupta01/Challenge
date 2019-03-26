@@ -15,5 +15,10 @@ case class BadgeUpdateConstraintFailed(user: Int) extends NotiDomainErrors {
 case class UserDoesNotExist(user_id: Long) extends NotiDomainErrors {
   override def msg: String = s"User Not found for user_id: ${user_id}"
 }
-
+case class TemplateDoesNotExistForKey(template_key: String) extends NotiDomainErrors {
+  override def msg: String = s"Template Not found for template_key: ${template_key}"
+}
+case class HttpServiceException(httpUrl : String, errorMsg: String) extends NotiDomainErrors {
+  def msg: String = s"HttpService $httpUrl return error"
+}
 final case class ErrorResp(errors: String)
