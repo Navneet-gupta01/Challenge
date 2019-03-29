@@ -24,7 +24,7 @@ INSERT INTO users (surname, firstname, email, gender, subscribedtonewsletter) VA
 
 
 
-INSERT INTO templates (template , key) VALUES ('\n Hello dear {{user.salutation}} {{user.name}},\n this are our latest news...\n\nIn case you donot want to receive any further newsletters in the future please unsubscribe here:\n https://domain-of-product.de/unsubscribe-newsletter/{{user.identifier}}\nBest Regards,\nYour Customer Support Team', 'newsletter');
+INSERT INTO templates (template , key) VALUES ('\nHello dear {{user.salutation}} {{user.name}},\n\n\nthis are our latest news...\n\n\nIn case you donot want to receive any further newsletters in the future please unsubscribe here:\nhttps://domain-of-product.de/unsubscribe-newsletter/{{user.identifier}}\n\n\nBest Regards,\nYour Customer Support Team', 'newsletter');
 
-INSERT INTO templates (template , key) VALUES ('\n Hello dear {{user.salutation}} {{user.name}},\n we are very happy to welcome you to our newsletter.\n\nIn case you donot want to receive any further newsletters in the future please unsubscribe here:\n https://domain-of-product.de/unsubscribe-newsletter/{{user.identifier}}\nBest Regards,\nYour Customer Support Team', 'welcome');
+INSERT INTO templates (template , key) VALUES ('\nHello dear {{user.salutation}} {{user.name}},\n\n\nwe are very happy to welcome you to our newsletter.\n\n\nIn case you donot want to receive any further newsletters in the future please unsubscribe here:\nhttps://domain-of-product.de/unsubscribe-newsletter/{{user.identifier}}\n\n\nBest Regards,\nYour Customer Support Team', 'welcome');
 
