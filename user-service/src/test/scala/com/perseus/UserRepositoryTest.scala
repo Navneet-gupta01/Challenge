@@ -35,6 +35,41 @@ abstract class UserRepositoryTest[F[_]](implicit ME:MonadError[F, UserDomainErro
           )
         ))
     }
+
+    describe("getUser") {
+      it("should fetch the user by id"){
+        val sut = createUserRepositoryWith(
+          List(UserEntity("Gupta" , "Navneet", "male", "navneet@navneet.com", false, Some(1L)),
+            UserEntity("Kumar" , "Navneet", "male", "navneet1@navneet1.com", true, Some(2L))))
+
+        run(sut.getUser(1L)) should be(
+          Right(Some(UserEntity("Gupta" , "Navneet", "male", "navneet@navneet.com", false, Some(1L))))
+        )
+      }
+
+      it("should fetch the user by it should return None for non-existing user") {
+        val sut = createUserRepositoryWith(
+          List(UserEntity("Gupta" , "Navneet", "male", "navneet@navneet.com", false, Some(1L)),
+            UserEntity("Kumar" , "Navneet", "male", "navneet1@navneet1.com", true, Some(2L))))
+
+        run(sut.getUser(4L)) should be(
+          Right(None)
+        )
+      }
+    }
+
+    describe("reset") {
+      it("should reset the table") {
+        val sut = createUserRepositoryWith(
+          List(UserEntity("Gupta" , "Navneet", "male", "navneet@navneet.com", false, Some(1L)),
+            UserEntity("Kumar" , "Navneet", "male", "navneet1@navneet1.com", true, Some(2L))))
+
+        run(for {
+          _ <- sut.reset
+          resetedUsers <- sut.list
+        } yield resetedUsers) should be (Right(List()))
+      }
+    }
   }
 
   def createUserRepositoryWith(users: List[UserEntity]): UserRepository[F]
