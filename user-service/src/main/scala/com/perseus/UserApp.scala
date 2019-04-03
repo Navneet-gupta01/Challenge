@@ -15,6 +15,8 @@ trait AppDep[F[_]] {
   val userService: UserService[F]
   val userRepository: UserRepository[F]
 }
+
+
 object UserApp extends IOApp {
   import cats.implicits._
   import com.olegpy.meow.hierarchy._

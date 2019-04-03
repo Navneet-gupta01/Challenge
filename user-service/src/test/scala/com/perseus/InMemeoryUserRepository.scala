@@ -19,7 +19,7 @@ class InMemeoryUserRepository extends UserRepository.Handler[Test] {
 
   override def listSubscribed: Test[List[UserEntity]] = for {
     state <- StateT.get[OrError, TestState]
-    result <- pure[OrError, TestState, List[UserEntity]](state.users.foldLeft(Nil:List[UserEntity])((a,b) => if(b.subscribedtonewsletter) b::a else a))
+    result <- pure[OrError, TestState, List[UserEntity]](state.users.filter(_.subscribedtonewsletter))  //foldLeft(Nil:List[UserEntity])((a,b) => if(b.subscribedtonewsletter) b::a else a))
   } yield result
 
   override def getUser(id: Long): Test[Option[UserEntity]] = for {
