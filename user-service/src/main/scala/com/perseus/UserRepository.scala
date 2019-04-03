@@ -9,3 +9,5 @@ trait UserRepository[F[_]] {
   def listSubscribed:F[List[UserEntity]]
   def getUser(id: Long): F[Option[UserEntity]]
 }
+
+

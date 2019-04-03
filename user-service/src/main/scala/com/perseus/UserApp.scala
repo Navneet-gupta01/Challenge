@@ -26,7 +26,7 @@ object UserApp extends IOApp {
     val services = api.routes
 
     BlazeServerBuilder[F]
-      .bindHttp(8083, "localhost")
+      .bindHttp(8083, "0.0.0.0")
       .withHttpApp(Router("/" -> services).orNotFound)
       .serve.compile.drain.as(ExitCode.Success)
 
