@@ -33,6 +33,7 @@ libraryDependencies ++= {
     "io.frees"        %% "frees-config"        % freeioVersion,
     "io.frees"        %% "frees-http4s"        % freeioVersion,
     "org.scalactic"   %% "scalactic"           % "3.0.5",
+    "org.scalatest"   %% "scalatest"           % "3.0.5" % "test",
     "org.typelevel"   %% "cats-core"           % catVersion,
     "org.tpolecat"    %% "doobie-core"         % doobieVersion,
     "org.tpolecat"    %% "doobie-hikari"       % doobieVersion,
