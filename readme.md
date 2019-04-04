@@ -1,7 +1,7 @@
 # Challenge
 
-* UIser Service
-* NotificationService
+* User Service
+* Notification Service
 * Template Service
 
 ## Simple SBT project .
@@ -13,7 +13,7 @@ Login to Postgres.
 create a database =>' CREATE DATABASE perseus'  
 change the configuration in files.  
  * username, databsename etc
-1.  user-service/src/main/scala/com/perseus/implicits.scala  
+1. user-service/src/main/scala/com/perseus/implicits.scala  
 2. template-service/src/main/scala/com/perseus/implicits.scala  
 
 # import tables
@@ -178,7 +178,7 @@ body:
 }
 ```
 
-# Get  Temoplate by key
+# Get Template by key
 ```
 curl -X GET \
   http://localhost:8084/templates/welcome \
