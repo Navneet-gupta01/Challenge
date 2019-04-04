@@ -27,21 +27,21 @@ class NotiApi[F[_]: ConcurrentEffect](
 
   def getUserDetail(id: Long): F[UserEntity] =
     BlazeClientBuilder[F](global).resource.use { client =>
-      val uri = Uri.uri("http://localhost:8083/users/") / id.toString
+      val uri = Uri.uri("http://perseus_users_server_1:8083/users/") / id.toString
       client.expectOr[UserEntity](uri) {
         case UnprocessableEntity(msg) => error.error(UserDoesNotExist(id))}
     }
 
   def getUsersList: F[List[UserEntity]] =
     BlazeClientBuilder[F](global).resource.use { client =>
-      val uri = Uri.uri("http://localhost:8083/users/subscribed")
+      val uri = Uri.uri("http://perseus_users_server_1:8083/users/subscribed")
       client.expectOr[List[UserEntity]](uri){
         case UnprocessableEntity(msg) => error.error(HttpServiceException(uri.toString(),null))}
     }
 
   def getTemplate(key: String): F[TemplateEntity] =
     BlazeClientBuilder[F](global).resource.use { client =>
-      val uri = Uri.uri("http://localhost:8084/templates/") / key
+      val uri = Uri.uri("http://perseus_template_server_1:8084/templates/") / key
       client.expectOr[TemplateEntity](uri){
         case UnprocessableEntity(msg) => error.error(TemplateDoesNotExistForKey(key))}
     }
