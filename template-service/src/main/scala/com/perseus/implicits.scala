@@ -16,7 +16,7 @@ trait DoobieImplicits {
 
   val config = new HikariConfig(new Properties {
     setProperty("driverClassName", "org.postgresql.Driver")
-    setProperty("jdbcUrl", "jdbc:postgresql:perseus")
+    setProperty("jdbcUrl", "jdbc:postgresql://postgres:5432/perseus")
     setProperty("username", "postgres")
     setProperty("password", "postgres")
     setProperty("maximumPoolSize", "5")

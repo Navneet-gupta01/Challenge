@@ -29,7 +29,7 @@ object NotiApp extends IOApp {
     val services = api.endPoints
 
     BlazeServerBuilder[F]
-      .bindHttp(8085, "localhost")
+      .bindHttp(8085, "0.0.0.0")
       .withHttpApp(Router("/" -> services).orNotFound)
       .serve.compile.drain.as(ExitCode.Success)
 

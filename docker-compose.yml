@@ -1,0 +1,29 @@
+version: '3'
+
+services:
+  postgres:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+  template_server:
+    build: template-service/.
+    depends_on:
+      - postgres
+    ports:
+      - "8084:8084"
+  users_server:
+    build: user-service/.
+    depends_on:
+      - postgres
+    ports:
+      - "8083:8083"
+  notification_server:
+    build: notification-service/.
+    ports:
+      - "8085:8085"
+#volumes:
+#  postgres-data:

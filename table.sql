@@ -1,3 +1,4 @@
+
 INSERT INTO users (surname, firstname, email, gender, subscribedtonewsletter) VALUES ('Turner', 'Tom', 'tom.turner@provider.de', 'male', true);
 INSERT INTO users (surname, firstname, email, gender, subscribedtonewsletter) VALUES ('Doe', 'John', 'jon.doe@test-mailing.com', 'male', true);
 INSERT INTO users (surname, firstname, email, gender, subscribedtonewsletter) VALUES ('Smith', 'Karen', 'k-smith@something.de', 'female', false);
@@ -9,7 +10,7 @@ INSERT INTO users (surname, firstname, email, gender, subscribedtonewsletter) VA
 INSERT INTO users (surname, firstname, email, gender, subscribedtonewsletter) VALUES ('Walker', 'Karen', 'karen-walker@something.de', 'female', true);
 INSERT INTO users (surname, firstname, email, gender, subscribedtonewsletter) VALUES ('Coco', 'Scrapy', 'coco-scrapy@somewhere.com', 'female', false);
 INSERT INTO users (surname, firstname, email, gender, subscribedtonewsletter) VALUES ('Doe', 'Craig', 'DoeCraig@provider.de', 'male', true);
-INSERT INTO users (surname, firstname, email, gender, subscribedtonewsletter) VALUES ('Kilbegan', 'Caroline', 'a.cooper@test-mail.com', 'female', true);
+INSERT INTO users (surname, firstname, email, gender, subscribedtonewsletter) VALUES ('Kilbegan', 'Caroline', 'k.caroline@test-mail.com', 'female', true);
 INSERT INTO users (surname, firstname, email, gender, subscribedtonewsletter) VALUES ('McGillan', 'Johnathan', 'jmc@test-mailing.com', 'male', true);
 INSERT INTO users (surname, firstname, email, gender, subscribedtonewsletter) VALUES ('Wright', 'Samy', 's.wright@something.de', 'female', false);
 INSERT INTO users (surname, firstname, email, gender, subscribedtonewsletter) VALUES ('McCallan', 'Maria', 'marmccal@somewhere.com', 'female', true);
