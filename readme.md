@@ -40,6 +40,18 @@ curl -X POST \
 
 # Functional Programming
 
+# Build Using Docker
+```
+git clone https://github.com/Navneet-gupta01/Challenge.git
+cd Challenge
+docker-compose up --build
+docker ps
+docker cp table.sql perseus_postgres_1:/
+docker exec -it $postgres_container_id bash
+psql -c '\i table.sql' -d perseus -U postgres
+```
+
+<!--
 # Start User Service:   
 ``` 
 cd perseus/user-service
@@ -58,7 +70,7 @@ sbt run
 cd perseus/notification-service
 sbt run
 ```
-
+-->
 
 # Send Welcome Message
 ```
