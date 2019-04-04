@@ -4,8 +4,6 @@
 * NotificationService
 * Template Service
 
-*NOTE* => Docker network setup pending for inter communication of containers
-
 ## Simple SBT project .
 
 ## Uses PostgresQL
