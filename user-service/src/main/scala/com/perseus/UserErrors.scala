@@ -1,7 +1,7 @@
 package com.perseus
 
 
-sealed trait UserDomainErrors extends Exception{
+sealed trait UserDomainErrors extends Exception {
   def errorMsg: String
 }
 
